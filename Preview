@@ -1,4 +1,5 @@
 local module = {}
+
 function module.GiveSpecs(plr,char: Model)
 	local leaderstats = game.ServerStorage[".stats"]:FindFirstChild(plr.Name)
 	local hum = char:WaitForChild("Humanoid")
@@ -120,4 +121,785 @@ function module.GiveSpecs(plr,char: Model)
 			f.Parent = skilltree
 		end
 	end
+
+	if leaderstats.SusanooColor.Value == 1 and leaderstats.WipesSeen.Value >= 70 and leaderstats.kek.Value == 1 then
+		local skilltree =  game.ServerStorage[".skilltree"]:WaitForChild(plr.Name)
+		if not skilltree:findFirstChild("Red Skeletal Susanoo") then
+			local f = Instance.new("IntValue")
+			f.Name = "Red Skeletal Susanoo"
+			f.Parent = skilltree
+		end
+	end
+
+	if leaderstats.Bijuu.Value > 0 then
+		game.ServerStorage.BijuuSystem.Cloak:Clone().Parent = plr.Backpack
+	end
+
+
+
+	if leaderstats.SeyvonSpec.Value == "Revimaru" then
+		game.ServerStorage.OrochiSpecs["Biting Fang"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["SnakeSummon"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.OrochiSpecs["Summoning: Rashomon"]:Clone().Parent = plr.Backpack	
+		game.ServerStorage.OrochiSpecs["Snake Binding"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.OrochiSpecs["Snake Clone"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["AkatWhitelist"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["OtokageHat"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Intangibility"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Akatsuki Hat"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Akatsuki Cloak"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["SNAKE AWAKEN"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Orochimaru Kusanagi"]:Clone().Parent = plr.Backpack
+		local LoadOut = game.ServerStorage.NewSpecs.OrochimaruLoadOut:Clone()
+		LoadOut.Parent = plr.Backpack
+		LoadOut.Disabled = false
+	end
+	
+	if  leaderstats.SeyvonSpec.Value == "Creeqzz" then
+		game.ServerStorage.JutsuTools["Intangibility"]:Clone().Parent = plr.Backpack
+		local LoadOut = game.ServerStorage.NewSpecs.ChrolloLoadOut:Clone()
+		LoadOut.Parent = plr.Backpack
+		LoadOut.Disabled = false
+		
+		local zzz = game.ServerStorage.Cosmetics["ChrolloFX"]:Clone()	
+		zzz.Parent = plr.Character
+		zzz.Torso.HumanoidRootPart.Part1 = plr.Character:WaitForChild("Torso")
+		zzz.Torso.HumanoidRootPart.C0 = CFrame.new(0,0,0) * CFrame.Angles(0,0,0)
+		zzz.Head.HumanoidRootPart.Part1 = plr.Character:WaitForChild("Head")
+		zzz.Head.HumanoidRootPart.C0 = CFrame.new(0,0,0) * CFrame.Angles(0,0,0)
+		zzz.RightArm.HumanoidRootPart.Part1 = plr.Character:WaitForChild("Right Arm")
+		zzz.RightArm.HumanoidRootPart.C0 = CFrame.new(0,0,0) * CFrame.Angles(0,0,0)
+		zzz.LeftArm.HumanoidRootPart.Part1 = plr.Character:WaitForChild("Left Arm")
+		zzz.LeftArm.HumanoidRootPart.C0 = CFrame.new(0,0,0) * CFrame.Angles(0,0,0)
+		zzz.RightLeg.HumanoidRootPart.Part1 = plr.Character:WaitForChild("Right Leg")
+		zzz.RightLeg.HumanoidRootPart.C0 = CFrame.new(0,0,0) * CFrame.Angles(0,0,0)
+		zzz.LeftLeg.HumanoidRootPart.Part1 = plr.Character:WaitForChild("Left Leg")
+		zzz.LeftLeg.HumanoidRootPart.C0 = CFrame.new(0,0,0) * CFrame.Angles(0,0,0)
+		local attachment = Instance.new("Attachment")
+		attachment.Name = "Star"
+		attachment.Parent = plr.Character.HumanoidRootPart -- Attach the attachment to the character
+
+		-- Position the attachment using CFrame
+		attachment.CFrame = CFrame.new(0, 4, 0) * CFrame.Angles(0, 0, 0) 
+
+		zzz.Torso.Star1.ParticleEmitter.Parent = plr.Character.HumanoidRootPart.Star
+		local attachment1 = Instance.new("Attachment")
+		attachment1.Name = "Ground"
+		attachment1.Parent = plr.Character.HumanoidRootPart -- Attach the attachment to the character
+
+		-- Position the attachment using CFrame
+		attachment1.CFrame = CFrame.new(0, -2.8, 0) * CFrame.Angles(0, 0, 0) 
+
+		zzz.Torso.ground["black 1"].Parent = plr.Character.HumanoidRootPart.Ground
+		zzz.Torso.ground["black 2"].Parent = plr.Character.HumanoidRootPart.Ground
+		zzz.Torso.ground["black 3"].Parent = plr.Character.HumanoidRootPart.Ground
+		
+		for i,v in pairs(char:GetChildren())do
+			if v.Name == "Headband" then
+				v:Destroy()
+			end
+		end
+	end
+	
+	if leaderstats.SeyvonSpec.Value == "Toad Sage" then
+		task.spawn(function()
+			task.wait(2)
+			for i,v in pairs(char:GetChildren())do
+				if v.Name == "MORPHLeft Arm" or v.Name == "MORPHRight Arm" or v.Name == "MORPHLeft Leg" or v.Name == "MORPHRight Leg" or v.Name == "MORPHTorso" then
+					v:Destroy()
+				end
+				local p3 = game.ServerStorage.Assets["Toad sage cloak"]["RA"]:Clone()
+				p3.Motor6D.Part1 = plr.Character:WaitForChild("Right Arm")
+				p3.Motor6D.C0 = CFrame.new(0,0.025,0) * CFrame.Angles(0,0,0)
+				p3.Parent = plr.Character
+				p3:SetNetworkOwner(plr)
+				local p2 = game.ServerStorage.Assets["Toad sage cloak"]["LA"]:Clone()
+				p2.Motor6D.Part1 = plr.Character:WaitForChild("Left Arm")
+				p2.Motor6D.C0 = CFrame.new(0,0.025,0) * CFrame.Angles(0,0,0)
+				p2.Parent = plr.Character
+				p2:SetNetworkOwner(plr)
+				local p = game.ServerStorage.Assets["Toad sage cloak"]["T"]:Clone()
+				p.Motor6D.Part1 = plr.Character:WaitForChild("Torso")
+				p.Motor6D.C0 = CFrame.new(0,0.69,0.01) * CFrame.Angles(0,0,0)
+				p.Parent = plr.Character
+				p:SetNetworkOwner(plr)
+				local ll = game.ServerStorage.Assets["SageModeScroll"]:Clone()
+				ll.Torsot.HumanoidRootPart.Part1 = plr.Character:WaitForChild("Torso")
+				ll.Torsot.HumanoidRootPart.C0 = CFrame.new(0,0.8,-1.2) * CFrame.Angles(0,0,math.rad(0))
+				ll.Parent = plr.Character
+				ll:SetNetworkOwner(plr)
+
+			end
+		end)
+	end
+	
+	
+	
+	--KAMIZURU
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 17 then
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Hornet Dash"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["PoisonBees"]:Clone().Parent = plr.Backpack
+	end
+
+	if leaderstats.SeyvonSpec.Value == "Akatsuki" then
+		game.ServerStorage.JutsuTools["Akatsuki Hat"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Akatsuki Cloak"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["AKATSUKI"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["AkatWhitelist"]:Clone().Parent = plr.Backpack
+		leaderstats.Title.Value = "Akatsuki"
+	end
+
+	if leaderstats.SeyvonSpec.Value == "BootlegKisame" then
+		game.ServerStorage.JutsuTools["Akatsuki Hat"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Akatsuki Cloak"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Samehada"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["SAMEHADA TRUE FORM"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["AkatWhitelist"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Will of Water"]:Clone().Parent = plr.Backpack
+		leaderstats.Title.Value = "Akatsuki"
+	end
+
+	if leaderstats.SeyvonSpec.Value == "Great Flame Rasengan" then
+		game.ServerStorage.JutsuTools["Great Flame Rasengan"]:Clone().Parent = plr.Backpack
+
+	end
+
+	if leaderstats.SeyvonSpec.Value == "Earth Flow Spears" then
+		game.ServerStorage.JutsuTools["Earth Flow Spears"]:Clone().Parent = plr.Backpack
+
+	end
+	
+
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 20 then
+		game.ServerStorage.JutsuTools["Rasengan"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Chain Clone"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+	end
+
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 33 then
+		game.ServerStorage.JutsuTools["Flying Thunder God"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Flying Odama Rasengan"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Marked Kunai"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+	end
+
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 24 then
+		game.ServerStorage.JutsuTools["Y Wind Impact"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Z God Push"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+	end
+	
+	--SARUTOBI
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 4 then
+		game.ServerStorage.JutsuTools["Ash Explosion"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Adamantine Staff"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["SarutobiProg"]:Clone().Parent = plr.Backpack
+		game.ServerStroage.JutsuTool["Asuma Blades"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+	end
+	
+	--MOMOCHI
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 43 then
+		game.ServerStorage.JutsuTools["Silent Killing"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Mist Dragon"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+	end
+	
+	-- HYUGA
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 2 then
+		game.ServerStorage.JutsuTools["128 Palms"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Huge Palm Rotation"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Twin Lion Fists"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+		end
+
+	-- CHINO
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 14 then
+		game.ServerStorage.JutsuTools["Blood Dragon Alt"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Twin Blood Dragons"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Exploding Human Technique"]:Clone().Parent = plr.Backpack
+	end
+	
+	-- ABURAME
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 13 then
+		game.ServerStorage.JutsuTools["Rinkaichu Cloak"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Rinkaichu Poison Cloud"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+	end
+	
+
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 25 then
+		game.ServerStorage.JutsuTools["Spinning Shark Rush"]:Clone().Parent = plr.Backpack	
+		game.ServerStorage.JutsuTools["Shark Bomb Alt"]:Clone().Parent = plr.Backpack	
+		game.ServerStorage.JutsuTools["Shark Form"]:Clone().Parent = plr.Backpack	
+		game.ServerStorage.JutsuTools["HoshiProg"]:Clone().Parent = plr.Backpack	
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+		
+	end
+	
+	--KAZESUNA
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 7 then
+		game.ServerStorage.JutsuTools["Sand Tsunami"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Platinum Sand Hammer"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Iron Sand"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+	end
+
+	--KAGUYA
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 36 then
+		game.ServerStorage.JutsuTools["Dance of the Iris"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Dance of the Cypress"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+	end
+	
+	--MIYAJIMA
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 18 then
+		game.ServerStorage.JutsuTools["Crystal Tracking Dragon"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Crystal Dragon Bullet"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Jade Crystals"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Jade Piercer"]:Clone().Parent = plr.Backpack
+	end
+	
+	--SHOKYO
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 27 then
+		game.ServerStorage.JutsuTools["Atomic Krys"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Particle Box"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Particle Beam"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Particle Flurry"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["BloodsCross"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+	end
+	
+	-- AKAFURA
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 19 then
+		game.ServerStorage.JutsuTools["Demonic Exploding Palm"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Demonic Slam"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+	end
+	
+	--SUZUMURA
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 23 then
+		game.ServerStorage.JutsuTools["Bubble Missles"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Bubble Bomb"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Bubble Flute"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Suzumura"]:Clone().Parent = plr.Backpack
+	end
+	
+	--HOZUKI
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 24 then
+		game.ServerStorage.JutsuTools["Hydrification: Pull"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Hydrification: Missiles"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["HozukiProg"]:Clone().Parent = plr.Backpack
+		
+	end
+	
+	--LC3
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 12 then
+		game.ServerStorage.JutsuTools["Lightning Cloak 3"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Liger Bomb"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["White Ceinture"]:Clone().Parent = plr.Backpack
+	
+	end
+	
+	--YUKI
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 21 then
+		game.ServerStorage.JutsuTools["Ice Skate"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Twin Ice Dragons"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+	end
+	
+	
+	if leaderstats.Luigi.Value == 1 then
+		task.spawn(function()
+			task.wait(2)
+			for i,v in pairs(char:GetChildren())do
+				if v.Name == "Headband" or v.Name == "MORPHLeft Arm" or v.Name == "MORPHRight Arm" or v.Name == "MORPHLeft Leg" or v.Name == "MORPHRight Leg" or v.Name == "MORPHTorso" then
+					v:Destroy()
+				end
+			end
+			for i,v in pairs(char:GetChildren()) do
+				if v.ClassName == "Accessory" then
+					v:Destroy()
+				end
+			end
+			plr.Character.FakeHead.Eyebrow.Transparency = 1
+			plr.Character.FakeHead.Socket.Transparency = 1
+			local zzz = game.ServerStorage.Cosmetics["Luigi"]:Clone()	
+			zzz.Parent = plr.Character
+			plr.Character.Torso.Transparency = 1
+			zzz.Torso.HumanoidRootPart.Part1 = plr.Character:WaitForChild("Torso")
+			zzz.Torso.HumanoidRootPart.C0 = CFrame.new(0,0,0) * CFrame.Angles(0,0,0)
+
+			plr.Character:WaitForChild("Left Leg").Transparency = 1			
+			zzz.Lleg.HumanoidRootPart.Part1 = plr.Character:WaitForChild("Left Leg")
+			zzz.Lleg.HumanoidRootPart.C0 = CFrame.new(0,0,0) * CFrame.Angles(0,0,0) 
+			plr.Character:WaitForChild("Right Leg").Transparency = 1	
+			zzz.Rleg.HumanoidRootPart.Part1 = plr.Character:WaitForChild("Right Leg")
+			zzz.Rleg.HumanoidRootPart.C0 = CFrame.new(0,0,0) * CFrame.Angles(0,0,0) 
+			plr.Character:WaitForChild("Right Arm").Transparency = 1
+			zzz.Rarm.HumanoidRootPart.Part1 = plr.Character:WaitForChild("Right Arm")
+			zzz.Rarm.HumanoidRootPart.C0 = CFrame.new(0,0,0) * CFrame.Angles(0,0,0) 
+
+			plr.Character:WaitForChild("Left Arm").Transparency = 1
+			zzz.Larm.HumanoidRootPart.Part1 = plr.Character:WaitForChild("Left Arm")
+			zzz.Larm.HumanoidRootPart.C0 = CFrame.new(0,0,0) * CFrame.Angles(0,0,0) 
+			plr.Character.FakeHead.Transparency = 1
+			zzz.Head.HumanoidRootPart.Part1 = plr.Character:WaitForChild("Head")
+			zzz.Head.HumanoidRootPart.C0 = CFrame.new(0,-0.4,-0.1) * CFrame.Angles(0,0,0) 
+
+			zzz:SetNetworkOwner(plr)
+
+
+
+
+		end)
+	end
+	
+	
+	if leaderstats.Luigi.Value >= 2 then
+		task.spawn(function()
+			task.wait(2)
+			local attachment = Instance.new("Attachment")
+			local zzz = game.ServerStorage.Cosmetics["Crystal"]:Clone()	
+			attachment.Name = "Crystal"
+			attachment.Parent = plr.Character.HumanoidRootPart -- Attach the attachment to the character
+
+			-- Position the attachment using CFrame
+			attachment.CFrame = CFrame.new(1.5, 2.5, -0) * CFrame.Angles(0, 86, 0) 
+			
+			zzz.Parent = plr.Character
+            zzz.AlignOrientation.Attachment1 = plr.Character:WaitForChild("HumanoidRootPart").Crystal
+			zzz.AlignPosition.Attachment1 = plr.Character.HumanoidRootPart.Crystal
+			zzz.Crystal.Motor6D.Part1 = plr.Character:WaitForChild("Head")
+			zzz.Crystal.Motor6D.C0 = CFrame.new(0,-0.4,-0.1) * CFrame.Angles(0,0,0)
+			wait(1)
+			zzz.Crystal.Motor6D.Part1 = nil
+			zzz:SetNetworkOwner(plr)
+           
+		end)
+	end
+	if leaderstats.Luigi.Value == 3 then
+		task.spawn(function()
+			task.wait(2)
+			local attachment = Instance.new("Attachment")
+			attachment.CFrame = CFrame.new(0.928, -0.355, -2.619) * CFrame.Angles(68.709, -133.693, 151.346) 
+			attachment.Orientation = Vector3.new(68.709, -133.693, 151.346)
+			local zzz1 = game.ServerStorage.Cosmetics["BOOKY"]:Clone()	
+			attachment.Name = "Book"
+			attachment.Parent = plr.Character.HumanoidRootPart -- Attach the attachment to the character
+
+			-- Position the attachment using CFrame
+			
+            
+			zzz1.Parent = plr.Character
+			zzz1.AlignOrientation.Attachment1 = plr.Character:WaitForChild("HumanoidRootPart").Book
+			zzz1.AlignPosition.Attachment1 = plr.Character.HumanoidRootPart.Book
+			wait(5)
+			attachment.Orientation = Vector3.new(68.709, -133.693, 151.346)
+			local TweenService = game:GetService("TweenService")
+			local function createFloatingMotion(attachment)
+				-- Define the start and end positions for the float
+				local startPosition = attachment.Position
+				local endPosition = startPosition + Vector3.new(0, 1, 0) -- Move up by 1 unit
+
+				-- TweenInfo for smooth motion
+				local tweenInfo = TweenInfo.new(
+					1, -- Duration (1 second for up or down)
+					Enum.EasingStyle.Sine, -- Smooth easing style
+					Enum.EasingDirection.InOut, -- Smooth transition in and out
+					-1, -- Repeat indefinitely
+					true -- Reverse after each tween (creates up-and-down motion)
+				)
+
+				-- Tween the Position property of the attachment
+				local tween = TweenService:Create(
+					attachment,
+					tweenInfo,
+					{ Position = endPosition }
+				)
+
+				tween:Play()
+			end
+
+			-- Start floating motion for the attachment
+			createFloatingMotion(attachment)
+			
+		end)
+	end
+	if leaderstats.SeyvonSpec.Value == "Water" then
+		task.spawn(function()
+			task.wait(2)
+			for i,v in pairs(char:GetChildren())do
+				if v.Name == "Headband" or v.Name == "MORPHLeft Arm" or v.Name == "MORPHRight Arm" or v.Name == "MORPHLeft Leg" or v.Name == "MORPHRight Leg" or v.Name == "MORPHTorso" then
+					v:Destroy()
+				end
+			end
+			for i,v in pairs(char:GetChildren()) do
+				if v.ClassName == "Accessory" then
+					v:Destroy()
+				end
+			end
+			plr.Character.FakeHead.Eyebrow.Transparency = 1
+			plr.Character.FakeHead.Socket.Transparency = 1
+			local zzz = game.ServerStorage.Cosmetics["WaterHeart"]:Clone()	
+			zzz.Parent = plr.Character
+			plr.Character.Torso.Transparency = 1
+			zzz.Torso.HumanoidRootPart.Part1 = plr.Character:WaitForChild("Torso")
+			zzz.Torso.HumanoidRootPart.C0 = CFrame.new(0,0,0) * CFrame.Angles(0,0,0)
+
+			plr.Character:WaitForChild("Left Leg").Transparency = 1			
+			zzz.Lleg.HumanoidRootPart.Part1 = plr.Character:WaitForChild("Left Leg")
+			zzz.Lleg.HumanoidRootPart.C0 = CFrame.new(0,0,0) * CFrame.Angles(0,0,0) 
+			plr.Character:WaitForChild("Right Leg").Transparency = 1	
+			zzz.Rleg.HumanoidRootPart.Part1 = plr.Character:WaitForChild("Right Leg")
+			zzz.Rleg.HumanoidRootPart.C0 = CFrame.new(0,0,0) * CFrame.Angles(0,0,0) 
+			plr.Character:WaitForChild("Right Arm").Transparency = 1
+			zzz.Rarm.HumanoidRootPart.Part1 = plr.Character:WaitForChild("Right Arm")
+			zzz.Rarm.HumanoidRootPart.C0 = CFrame.new(0,0,0) * CFrame.Angles(0,0,0) 
+
+			plr.Character:WaitForChild("Left Arm").Transparency = 1
+			zzz.Larm.HumanoidRootPart.Part1 = plr.Character:WaitForChild("Left Arm")
+			zzz.Larm.HumanoidRootPart.C0 = CFrame.new(0,0,0) * CFrame.Angles(0,0,0) 
+			plr.Character.FakeHead.Transparency = 1
+			
+
+			zzz:SetNetworkOwner(plr)
+
+
+
+
+		end)
+		
+	end
+	
+	--TOKAGE
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 41 then
+		game.ServerStorage.Jutsus["Final Stand"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Summon Ibuse"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Ibuse Tail Swipe"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Ibuse Poison Breath"]:Clone().Parent = plr.Backpack
+	end
+	
+	--TENSHI
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 44 then
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent=plr.Backpack
+		game.ServerStorage.JutsuTools["Paper Cranes"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Paper Shield"]:Clone().Parent = plr.Backpack
+	end
+	
+	--SUIJOKI
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 42 then
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Unrivalled Strength"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Erupting Propulsion Fist"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Disperse"]:Clone().Parent = plr.Backpack
+	end
+
+	if leaderstats.SeyvonSpec.Value == "JadeMiya" then
+		game.ServerStorage.JutsuTools["Jade Edge"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Jade Prison"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Jade Crossing"]:Clone().Parent = plr.Backpack
+	end
+
+	if leaderstats.SeyvonSpec.Value == "Flame Whirlwind" then
+		game.ServerStorage.JutsuTools["Flame Whirlwind"]:Clone().Parent = plr.Backpack
+	end
+
+	if leaderstats.SeyvonSpec2.Value == "WhiteCloak" then
+		game.ServerStorage.JutsuTools["White Cloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "WhiteFlamesCloak" then
+		game.ServerStorage.JutsuTools["White Flames Cloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "DevensCloak" then
+		game.ServerStorage.JutsuTools["Devens Dumb Cloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "EdoCloak" then
+		game.ServerStorage.JutsuTools["Edo Cloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "Pyraa" then
+		game.ServerStorage.JutsuTools["ZenCloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "MagnusCloak" then
+		game.ServerStorage.JutsuTools["Magnus Cloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "WhiteGreen" then
+		game.ServerStorage.JutsuTools["White Green Cloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "BlackCloak" then
+		game.ServerStorage.JutsuTools["BlackCloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "ColineCloak" then
+		game.ServerStorage.JutsuTools["ColineCloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "WhiteAndRed" then
+		game.ServerStorage.JutsuTools["WhiteAndRed"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "RainCloak" then
+		game.ServerStorage.JutsuTools["Rain Cloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "MagmaCloak" then
+		game.ServerStorage.JutsuTools["MagmaCloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "FireCloak" then
+		game.ServerStorage.JutsuTools["FireCloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "BlackAndPurple" then
+		game.ServerStorage.JutsuTools["BlackAndPurple"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "SohailCloak" then
+		game.ServerStorage.JutsuTools["SohailCloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "UzuCloak" then
+		game.ServerStorage.JutsuTools["UzuCloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "WhiteBlackCloak" then
+		game.ServerStorage.JutsuTools["WhiteBlackCloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "ChanKage" then
+		game.ServerStorage.JutsuTools["ChanKage"]:Clone().Parewwnt = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "LiquidChan" then
+		game.ServerStorage.JutsuTools["LiquidChan"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "BlueCloak" then
+		game.ServerStorage.JutsuTools["BlueCloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "BlueBlackCloak" then
+		game.ServerStorage.JutsuTools["BlueBlackCloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "GreenCloak" then
+		game.ServerStorage.JutsuTools["GreenCloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "DysCloak" then
+		game.ServerStorage.JutsuTools["DysCloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "KadenCloak" then
+		game.ServerStorage.JutsuTools["KadenCloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec2.Value == "OpenRed" then
+		game.ServerStorage.JutsuTools["OpenRed"]:Clone().Parent = plr.Backpack
+	end
+	
+	--KARATACHI 
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 22 then
+		game.ServerStorage.JutsuTools["Lava Fist Alt"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Lava Plume"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+	end
+	
+	--UCHIHA
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 1 then
+		game.ServerStorage.JutsuTools["Majestic Flame Destroyer"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Imperfect Susanoo Slap"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["3 Tomoe"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+	end
+
+	--SENJU
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 3 then
+		game.ServerStorage.JutsuTools["Giant Wood Pillar"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Twin Wood Dragons"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Wood Dragon"]:Clone().Parent = plr.Backpack
+	end
+	
+	--AKIMICHI
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 5 then
+		game.ServerStorage.JutsuTools["Final Stand"]:clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Expansion Stomp"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Multi-size Bellyflop"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["AkimichiProg"]:Clone().Parent = plr.Backpack
+	end
+
+	if leaderstats.SeyvonSpec.Value == "Admin" or leaderstats.SeyvonSpec2.Value  == "Admin" then
+		game.ServerStorage.JutsuTools["Akatsuki Hat"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Intangibility"]:Clone().Parent = plr.Backpack
+	end
+
+	if leaderstats.SeyvonSpec.Value == "ItachiHair" then
+		local LoadOut = game.ServerStorage.NewSpecs.CoolItachiLoadOut:Clone()
+		LoadOut.Parent = plr.Backpack
+		LoadOut.Disabled = false
+	end
+
+	if leaderstats.SeyvonSpec.Value == "KimiHair" then
+		game.ServerStorage.JutsuTools["AkatWhitelist"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Akatsuki Hat"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Akatsuki Cloak"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["AKATSUKI"]:Clone().Parent = plr.Backpack
+		local LoadOut = game.ServerStorage.NewSpecs.KimiHair:Clone()
+		LoadOut.Parent = plr.Backpack
+		LoadOut.Disabled = false
+	end
+	
+	--YOTSUKI
+	if leaderstats.Title.Value == "Kage" and leaderstats.kek.Value == 11 then
+		game.ServerStorage.JutsuTools["Black Lightning Panther Flurry"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Black Thunder Cloak"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Final Stand"]:Clone().Parent = plr.Backpack
+	end
+	
+	if leaderstats.SeyvonSpec.Value == "CurseMark" then
+		game.ServerStorage.JutsuTools["True Curse Mark"]:Clone().Parent = plr.Backpack
+	end
+
+	-- 7nsm
+
+	if leaderstats.SeyvonSpec.Value == "Kubi" then
+		game.ServerStorage.JutsuTools["Kubikiribocho"]:Clone().Parent = plr.Backpack
+	end
+
+	if leaderstats.SeyvonSpec.Value == "Hiram" then
+		game.ServerStorage.JutsuTools["Hiramekarei"]:Clone().Parent = plr.Backpack
+	end
+
+	if leaderstats.SeyvonSpec.Value == "Kiba" then
+		game.ServerStorage.JutsuTools["Kiba"]:Clone().Parent = plr.Backpack
+	end
+
+	if leaderstats.SeyvonSpec.Value == "Nuibari" then
+		game.ServerStorage.JutsuTools["Nuibari"]:Clone().Parent = plr.Backpack
+	end
+
+	if leaderstats.SeyvonSpec.Value == "Shibuki" then
+		game.ServerStorage.NewTools["Shibuki"]:Clone().Parent = plr.Backpack
+	end
+
+	if leaderstats.SeyvonSpec.Value == "Samehada" then
+		game.ServerStorage.JutsuTools["Samehada"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec.Value == "SamehadaHoshi" then
+		game.ServerStorage.JutsuTools["Samehada"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["SAMEHADA TRUE FORM"]:Clone().Parent = plr.Backpack
+	end
+	local stats = leaderstats
+	
+	-- JIN MOVES
+	if leaderstats.Bijuu.Value == 1 and leaderstats.BijuuExperience == 25 then
+		game.ServerStorage.JutsuTools["Sand Burial"]:Clone().Parent = plr.Backpack
+	elseif leaderstats.Bijuu.Value == 2 and leaderstats.BijuuExperience == 40 then
+		game.ServerStorage.JutsuTools["Azure Pillars "]:Clone().Parent = plr.Backpack
+	elseif leaderstats.Bijuu.Value == 3 and leaderstats.BijuuExperience == 55 then
+		game.ServerStorage.JutsuTools["Coral Whirlpool"]:Clone().Parent = plr.Backpack
+	elseif leaderstats.Bijuu.Value == 4 and leaderstats.BijuuExperience == 70 then
+		game.ServerStorage.JutsuTools["Volcanic Eruption"]:Clone().Parent = plr.Backpack
+	elseif leaderstats.Bijuu.Value == 5 and leaderstats.BijuuExperience == 85 then
+	game.ServerStorage.JutsuTools["Kokuo Cloak"]:Clone().Parent = plr.Backpack
+	end
+	if leaderstats.SeyvonSpec.Value == "KimiHair" then return end
+
+	if leaderstats.SeyvonSpec.Value == "Konan" then
+		local LoadOut = game.ServerStorage.NewSpecs.KonanLoadOut:Clone()
+		LoadOut.Parent = plr.Backpack
+		LoadOut.Disabled = false
+		hum.MaxHealth = hum.MaxHealth + 200
+		plr.Chakra.MaxValue = plr.Chakra.MaxValue + 200
+	elseif leaderstats.SeyvonSpec.Value == "Kisame" then
+		game.ServerStorage.JutsuTools["Samehada"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["KISAME AWAKENING"]:Clone().Parent = plr.Backpack
+		local LoadOut = game.ServerStorage.NewSpecs.KisameLoadOut:Clone()
+		LoadOut.Parent = plr.Backpack
+		LoadOut.Disabled = false
+		hum.MaxHealth = hum.MaxHealth + 200
+		plr.Chakra.MaxValue = plr.Chakra.MaxValue + 200
+	elseif leaderstats.SeyvonSpec.Value == "Tobi" then
+		local LoadOut = game.ServerStorage.NewSpecs.TobiLoadOut:Clone()
+		LoadOut.Parent = plr.Backpack
+		LoadOut.Disabled = false
+		hum.MaxHealth = hum.MaxHealth + 200
+		plr.Chakra.MaxValue = plr.Chakra.MaxValue + 200
+	elseif leaderstats.SeyvonSpec.Value == "Deidara" then
+		local LoadOut = game.ServerStorage.NewSpecs.DeidaraLoadOut:Clone()
+		game.ServerStorage.JutsuTools["C2 - Dragon"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["C1 - Landmines"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["C1 - Spiders"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["C1 - Eagle"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Clay Mines"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Clay Clone"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["AkatWhitelist"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Stomp"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["AKATSUKI"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Akatsuki Cloak"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Akatsuki Hat"]:Clone().Parent = plr.Backpack
+		LoadOut.Parent = plr.Backpack
+		LoadOut.Disabled = false
+		hum.MaxHealth = hum.MaxHealth + 200
+		plr.Chakra.MaxValue = plr.Chakra.MaxValue + 200
+	elseif leaderstats.SeyvonSpec.Value == "Pain" then
+		local LoadOut = game.ServerStorage.NewSpecs.PainLoadOut:Clone()
+		LoadOut.Parent = plr.Backpack
+		LoadOut.Disabled = false
+		hum.MaxHealth = hum.MaxHealth + 400
+		plr.Chakra.MaxValue = plr.Chakra.MaxValue + 400
+	elseif leaderstats.SeyvonSpec.Value == "Kakazu" then
+		local LoadOut = game.ServerStorage.NewSpecs.KakuzuLoadOut:Clone()
+		LoadOut.Parent = plr.Backpack
+		LoadOut.Disabled = false
+	elseif leaderstats.SeyvonSpec.Value == "Itachi" then
+		local LoadOut = game.ServerStorage.NewSpecs.ItachiLoadOut:Clone()
+		game.ServerStorage.JutsuTools["Itachi Tsukuyomi"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["RevanAmaterasu"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Onyx Chidori"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Akatsuki Cloak"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Akatsuki Hat"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Susan"]:Clone().Parent = plr.Backpack
+		LoadOut.Parent = plr.Backpack
+		LoadOut.Disabled = false
+		hum.MaxHealth = hum.MaxHealth + 200
+		plr.Chakra.MaxValue = plr.Chakra.MaxValue + 200
+	elseif leaderstats.SeyvonSpec.Value == "Kimi" then
+		local LoadOut = game.ServerStorage.NewSpecs.KimiLoadOut:Clone()
+		LoadOut.Parent = plr.Backpack
+		hum.MaxHealth = hum.MaxHealth + 60
+		LoadOut.Disabled = false
+	elseif leaderstats.SeyvonSpec.Value == "Revimaru" then
+		hum.MaxHealth = hum.MaxHealth + 100
+		plr.Chakra.MaxValue = plr.Chakra.MaxValue + 150
+	elseif leaderstats.SeyvonSpec.Value == "Zetsu" then
+		local LoadOut = game.ServerStorage.NewSpecs.ZetsuLoadOut:Clone()
+		LoadOut.Parent = plr.Backpack
+		LoadOut.Disabled = false
+		hum.MaxHealth = hum.MaxHealth + 150
+		plr.Chakra.MaxValue = plr.Chakra.MaxValue + 200
+	elseif leaderstats.SeyvonSpec.Value == "Eternal" then
+		game.ServerStorage.JutsuTools["Mangekyo"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Eternal Mangekyo"]:Clone().Parent = plr.Backpack
+	elseif leaderstats.SeyvonSpec.Value == "Sasori" then
+		game.ServerStorage.JutsuTools["Akatsuki Cloak"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Akatsuki Hat"]:Clone().Parent = plr.Backpack
+		local LoadOut = game.ServerStorage.NewSpecs.SasoriLoadOut:Clone()
+		LoadOut.Parent = plr.Backpack
+		LoadOut.Disabled = false
+	elseif leaderstats.SeyvonSpec.Value == "Sasuke" then
+		local LoadOut = game.ServerStorage.NewSpecs.SasukeLoadOut:Clone()
+		LoadOut.Parent = plr.Backpack
+		LoadOut.Disabled = false
+		hum.MaxHealth = hum.MaxHealth + 50
+		plr.Chakra.MaxValue = plr.Chakra.MaxValue + 50
+	elseif leaderstats.SeyvonSpec.Value == "Jugo" then
+		local LoadOut = game.ServerStorage.NewSpecs.JugoLoadOut:Clone()
+		LoadOut.Parent = plr.Backpack
+		LoadOut.Disabled = false
+	elseif leaderstats.SeyvonSpec.Value == "Hidan" then
+		local LoadOut = game.ServerStorage.NewSpecs.HidanLoadOut:Clone()
+		--game.ServerStorage.JutsuTools["Hidan Scythe"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Cursed Blood Possession"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Akatsuki Cloak"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Scythe Throw"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["Akatsuki Hat"]:Clone().Parent = plr.Backpack
+		game.ServerStorage.JutsuTools["AKATSUKI"]:Clone().Parent = plr.Backpack
+		LoadOut.Parent = plr.Backpack
+		LoadOut.Disabled = false
+		hum.MaxHealth = hum.MaxHealth + 300
+		plr.Chakra.MaxValue = plr.Chakra.MaxValue + 200
+	end
+end
 return module
+-- module script i made for my game which basically assisgns different abilties and morphs based on values in your .stats
