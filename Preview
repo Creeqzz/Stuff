@@ -1,0 +1,123 @@
+local module = {}
+function module.GiveSpecs(plr,char: Model)
+	local leaderstats = game.ServerStorage[".stats"]:FindFirstChild(plr.Name)
+	local hum = char:WaitForChild("Humanoid")
+	local FakeHead = char:WaitForChild("FakeHead")
+	
+	if leaderstats.Mangekyo.Value == 1 then
+		local skilltree =  game.ServerStorage[".skilltree"]:WaitForChild(plr.Name)
+		if not skilltree:findFirstChild("Amaterasu") then
+			local f = Instance.new("IntValue")
+			f.Name = "Amaterasu"
+			f.Parent = skilltree
+		end
+	end
+	if leaderstats.Pact.Value == 1 then
+		leaderstats.Pact.Value = 0
+		local PDM = require(game.ServerScriptService.Data:WaitForChild("PlayerDataManager"))
+		local folders = game.ServerStorage:FindFirstChild(".stats")
+		repeat wait(0.1) until PDM:GetPlayer(plr) ~= nil
+		local data = PDM:GetPlayer(plr)
+		data.Wiped += 1
+		plr:Kick("You lost the 1v1 :(     ".. data.Wiped-1)
+	end
+	if leaderstats.SeyvonSpec.Value == "Mod" then
+		task.spawn(function()
+			task.wait(2)
+		plr.Character.HumanoidRootPart.CFrame = game.Workspace.BootLegFixSpawn.ModBox.CFrame
+	end)
+	end	
+		if leaderstats.Plague.Value == 1 then
+		--leaderstats.Plague.Value = 0 -- They won the event.
+
+		local ls = game.ReplicatedStorage.PlagueStuff.Disease:Clone()
+		ls.Parent = char
+
+	end 
+	local MarketPlaceService = game:GetService("MarketplaceService"):UserOwnsGamePassAsync(plr.UserId,6495978938)
+	
+	if plr.Name == "Creeqzz" then
+		local custom = game.ServerStorage.NewSpecs.CustomHatsGamepass:Clone()
+		custom.Parent = plr.Backpack
+		custom.Disabled = false
+	end
+
+	if plr then
+		wait(5)
+		local humanoid = plr.Character.Humanoid
+		humanoid:TakeDamage(0.1)
+	end
+	
+	if leaderstats.EternalMangekyo.Value == 3 then
+		local skilltree =  game.ServerStorage[".skilltree"]:WaitForChild(plr.Name)
+		if not skilltree:findFirstChild("Warp") then
+			local f = Instance.new("IntValue")
+			f.Name = "Warp"
+			f.Parent = skilltree
+		end
+	end
+
+	if leaderstats.EternalMangekyo.Value == 3 then
+		local skilltree =  game.ServerStorage[".skilltree"]:WaitForChild(plr.Name)
+		if not skilltree:findFirstChild("Warp") then
+			local f = Instance.new("IntValue")
+			f.Name = "Warp"
+			f.Parent = skilltree
+		end
+	end
+	
+	
+	if leaderstats.Mangekyo.Value == 2 then
+		local skilltree =  game.ServerStorage[".skilltree"]:WaitForChild(plr.Name)
+		if not skilltree:findFirstChild("Mangekyo Intangibility") then
+			local f = Instance.new("IntValue")
+			f.Name = "Mangekyo Intangibility"
+			f.Parent = skilltree
+		end
+	end
+
+	if leaderstats.Mangekyo.Value == 3 then
+		local skilltree =  game.ServerStorage[".skilltree"]:WaitForChild(plr.Name)
+		if not skilltree:findFirstChild("Black Hole") then
+			local f = Instance.new("IntValue")
+			f.Name = "Black Hole"
+			f.Parent = skilltree
+		end
+	end
+
+	if leaderstats.Mangekyo.Value == 4 then
+		local skilltree =  game.ServerStorage[".skilltree"]:WaitForChild(plr.Name)
+		if not skilltree:findFirstChild("Akumu") then
+			local f = Instance.new("IntValue")
+			f.Name = "Akumu"
+			f.Parent = skilltree
+		end
+	end
+
+	if leaderstats.SusanooColor.Value == 3 and leaderstats.WipesSeen.Value >= 70 and leaderstats.kek.Value == 1 then
+		local skilltree =  game.ServerStorage[".skilltree"]:WaitForChild(plr.Name)
+		if not skilltree:findFirstChild("Purple Skeletal Susanoo") then
+			local f = Instance.new("IntValue")
+			f.Name = "Purple Skeletal Susanoo"
+			f.Parent = skilltree
+		end
+	end
+
+	if leaderstats.SusanooColor.Value == 11 and leaderstats.WipesSeen.Value >= 70 and leaderstats.kek.Value == 1 then
+		local skilltree =  game.ServerStorage[".skilltree"]:WaitForChild(plr.Name)
+		if not skilltree:findFirstChild("White Skeletal Susanoo") then
+			local f = Instance.new("IntValue")
+			f.Name = "White Skeletal Susanoo"
+			f.Parent = skilltree
+		end
+	end
+
+	if leaderstats.SusanooColor.Value == 2 and leaderstats.WipesSeen.Value >= 70 and leaderstats.kek.Value == 1 then
+		local skilltree =  game.ServerStorage[".skilltree"]:WaitForChild(plr.Name)
+		if not skilltree:findFirstChild("Blue Skeletal Susanoo") then
+			local f = Instance.new("IntValue")
+			f.Name = "Blue Skeletal Susanoo"
+			f.Parent = skilltree
+		end
+	end
+return module
