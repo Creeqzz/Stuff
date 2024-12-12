@@ -1,0 +1,149 @@
+local board = script.Parent.Parent
+local Players = game:GetService("Players")
+local ServerStorage = game:GetService("ServerStorage")
+-- Stores the current player on each platform
+local HttpService = game:GetService("HttpService")
+local currentPlayerOnPlatform = {
+	Player1 = nil,
+	Player2 = nil
+}
+ismatch = false
+-- Function to perform actions when both players are on their platforms
+local function resetActionState()
+	ismatch = false
+	currentPlayerOnPlatform.Player1 = nil
+	currentPlayerOnPlatform.Player2 = nil
+	print("Action has ended. Ready for a new match.")
+end
+
+local function sendWebhookMessage(message)
+	local webhookUrl = "https://discord.com/api/webhooks/1314650481100066898/Icm5L_Bh7aJM4Uy8QuIzGn0NKUzCshROQqaPYtRmYu5wdxdr5oIXA5HIuHaNvLT9CKZS"  -- Replace this with your actual webhook URL
+	local data = HttpService:JSONEncode({
+		content = message  -- Message you want to send
+	})
+
+	local success, response = pcall(function()
+	return HttpService:PostAsync(webhookUrl, data, Enum.HttpContentType.ApplicationJson)
+end)
+
+if success then
+	print("Message sent successfully!")
+else
+	warn("Failed to send webhook message: " .. response)
+end
+end
+
+
+local function performPlayerSpecificActions()
+	if currentPlayerOnPlatform.Player1 and currentPlayerOnPlatform.Player2 and ismatch == false then
+		local player1 = (currentPlayerOnPlatform.Player1)
+		local player2 = (currentPlayerOnPlatform.Player2)
+		local player1char = currentPlayerOnPlatform.Player1.Character
+		local player2char = currentPlayerOnPlatform.Player2.Character
+		-- Actions for Player1
+		if player1.Character:FindFirstChild("Intangibility") then
+			player1.Character.Intangibility:Destroy()
+			player1.Character.Disable:Destroy()
+		end
+		sendWebhookMessage("Match Started between ".. player1.Name .. " and " .. player2.Name)
+		player1.Character.Humanoid.Health = currentPlayerOnPlatform.Player1.Character.Humanoid.MaxHealth
+		player1.Character.HumanoidRootPart.CFrame = game.Workspace.FightClub.CFrame1.CFrame
+		print(player1.Name .. " is on Platform 1 and can start their specific action.")
+		ServerStorage[".stats"]:FindFirstChild(player1.Name).Pact.Value = 1
+
+		-- Actions for Player2
+		print(player2.Name .. " is on Platform 2 and can start their specific action.")
+		player2.Character.Humanoid.Health = currentPlayerOnPlatform.Player2.Character.Humanoid.MaxHealth
+		player2.Character.HumanoidRootPart.CFrame = game.Workspace.FightClub.CFrame2.CFrame
+		ServerStorage[".stats"]:FindFirstChild(player2.Name).Pact.Value = 1
+		if player2.Character:FindFirstChild("Intangibility")  then
+			player2.Character.Intangibility:Destroy()
+			player2.Character.Disable:Destroy()
+		    end
+		 
+		ismatch = true
+		local player1 = currentPlayerOnPlatform.Player1
+		local player2 = currentPlayerOnPlatform.Player2
+		
+		local function onPlayerDied1()
+			print(player1)
+			wait(10)
+			sendWebhookMessage(player2.Name .. " won the PD 1s against " .. player1.Name .. " │ Maybe try harder next time " .. player1.Name)
+			game.Workspace.FightClub.Matchover.CanTouch = true
+			wait(2)
+			game.Workspace.FightClub.Matchover.CanTouch = false
+			wait(2)
+			resetActionState()
+		end
+
+		local function onPlayerDied2()
+			print(player2)
+			wait(10)
+			sendWebhookMessage(player1.Name .. " won the PD 1s against " .. player2.Name .. " │ Maybe try harder next time " .. player2.Name)
+			game.Workspace.FightClub.Matchover.CanTouch = true
+			wait(2)
+			game.Workspace.FightClub.Matchover.CanTouch = false
+			wait(2)
+			resetActionState()
+		end
+		currentPlayerOnPlatform.Player1.Character.Humanoid.Died:Connect(onPlayerDied1)
+		currentPlayerOnPlatform.Player2.Character.Humanoid.Died:Connect(onPlayerDied2)
+		
+		end
+	end
+
+-- Function to handle player entering a platform
+local function handlePlayerEntered(partName, player)
+	-- Update the current player on the platform
+	currentPlayerOnPlatform[partName] = player
+	local surfaceGui = board.DisplayBoard.SurfaceGui[partName]
+	surfaceGui.TextLabel.Text = player.Name
+	local thumbnail = Players:GetUserThumbnailAsync(player.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
+	surfaceGui.ImageLabel.Image = thumbnail
+
+	-- Check and perform actions if both players are on their platforms
+	performPlayerSpecificActions()
+end
+
+-- Function to handle player leaving a platform
+local function handlePlayerLeft(partName, player)
+	-- Clear the current player on the platform if it's the same player leaving
+	if currentPlayerOnPlatform[partName] == player then
+		currentPlayerOnPlatform[partName] = nil
+		local surfaceGui = board.DisplayBoard.SurfaceGui[partName]
+		surfaceGui.TextLabel.Text = "None"
+		surfaceGui.ImageLabel.Image = "rbxassetid://12910382193"
+	end
+end
+
+-- Connect touch events for Part1 (Player1's platform)
+board.Part1.Touched:Connect(function(touchpart)
+	local player = Players:GetPlayerFromCharacter(touchpart.Parent)
+	if player and not currentPlayerOnPlatform.Player1 then  -- Check to prevent overwriting if a player is already on the platform
+		handlePlayerEntered("Player1", player)
+	end
+end)
+
+board.Part1.TouchEnded:Connect(function(touchpart)
+	wait(2)
+	local player = Players:GetPlayerFromCharacter(touchpart.Parent)
+	if player then
+		handlePlayerLeft("Player1", player)
+	end
+end)
+
+-- Connect touch events for Part2 (Player2's platform)
+board.Part2.Touched:Connect(function(touchpart)
+	local player = Players:GetPlayerFromCharacter(touchpart.Parent)
+	if player and not currentPlayerOnPlatform.Player2 then  -- Check to prevent overwriting if a player is already on the platform
+		handlePlayerEntered("Player2", player)
+	end
+end)
+
+board.Part2.TouchEnded:Connect(function(touchpart)
+	wait(2)
+	local player = Players:GetPlayerFromCharacter(touchpart.Parent)
+	if player then
+		handlePlayerLeft("Player2", player)
+	end
+end)
